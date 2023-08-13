@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog Post List</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-blue-300 m-20 justify-center flexs">
+    <h1><a href="/add_post" target="_blank">Add Blog</a></h1>
+    <div class="m-5 items-center p-5">
+        <h1 class="font-bold text-2xl">Blog Post List</h1>
+        <table>
+            <tr>
+                <th class="p-4">Title</th>
+                <th class="p-4">Description</th>
+                <th class="p-4">Image</th>
+            </tr>
+            {% for post in blog_posts %}
+            <tr class="border border-2 border-red-500 m-5">
+                <td><a class="p-5" href="{{ url_for('view_post', post_id=post[0]) }}">{{ post[1] }}</a></td>
+                <td>{{ post[2] }}</td>
+                <td><img src="{{ post[3] }}" alt="Image"></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
